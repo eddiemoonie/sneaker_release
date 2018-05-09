@@ -27,4 +27,24 @@ class SneakerRelease::Sneaker
     self.all[id-1]
   end
 
+  def color
+    @color ||= doc.css("p.style").text
+  end
+
+  def description
+    @description ||= doc.css("p.release-description").text.strip
+  end
+
+  def price
+    @price ||= doc.css("span").text.strip
+  end
+
+  def style_code
+    @style_code ||= doc.xpath("/html/body/div[3]/div[4]/div/div[1]/div/div[1]/div[3]/div[1]/div[2]/p[2]").text
+  end
+
+  def doc
+    @doc ||= Nokogiri::HTML(open(self.url))
+  end
+
 end

@@ -17,7 +17,7 @@ class SneakerRelease::CLI
     input = gets.strip.to_i
     if input.between?(1,12)
       sneaker = SneakerRelease::Sneaker.find(input)
-      #print_sneaker_info(sneaker)
+      print_sneaker_info(sneaker)
     else
       puts ""
       puts "INVALID OPTION. Please select again from the following:"
@@ -34,6 +34,22 @@ class SneakerRelease::CLI
     SneakerRelease::Sneaker.all.each.with_index(1) do |sneaker, index|
       puts "#{index}. #{sneaker.name} --- #{sneaker.date}"
     end
+  end
+
+  def print_sneaker_info(sneaker)
+    puts ""
+    puts "-------- #{sneaker.name} --------"
+    puts ""
+    puts "COLOR:                  #{sneaker.color}"
+    puts "RELEASE DATE:           #{sneaker.date}"
+    puts "STYLE CODE:             #{sneaker.style_code}"
+    puts "RETAIL PRICE:           #{sneaker.price}"
+    puts "LINK(pics available):   #{sneaker.url}"
+    puts ""
+    puts "-------- Description --------"
+    puts ""
+    puts "#{sneaker.description}"
+    puts ""
   end
 
 end
