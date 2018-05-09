@@ -8,7 +8,7 @@ class SneakerRelease::CLI
   end
 
   def start
-    #print_sneakers_list
+    print_sneakers_list
 
     puts ""
     puts "Which sneaker release would you like to see?"
@@ -25,6 +25,15 @@ class SneakerRelease::CLI
     end
 
     #more_sneakers
+  end
+
+  def print_sneakers_list
+    puts ""
+    puts "-------- Upcoming Sneaker Releases --------"
+    puts ""
+    SneakerRelease::Sneaker.all.each.with_index(1) do |sneaker, index|
+      puts "#{index}. #{sneaker.name} --- #{sneaker.date}"
+    end
   end
 
 end
